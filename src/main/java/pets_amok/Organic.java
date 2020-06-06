@@ -1,4 +1,8 @@
 package pets_amok;
 
-public class Organic {
+public interface Organic {
+    void feedAllOrganicPets();
+    void waterAllOrganicPets();
+
+
 }

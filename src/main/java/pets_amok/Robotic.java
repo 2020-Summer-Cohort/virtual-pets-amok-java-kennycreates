@@ -1,4 +1,11 @@
 package pets_amok;
 
-public class Robotic {
-}
+public interface Robotic {
+
+    void oilAllRoboPets();
+    }
+
+
+
+
+
