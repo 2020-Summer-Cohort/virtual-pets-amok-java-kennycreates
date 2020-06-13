@@ -1,4 +1,5 @@
 package pets_amok;
+
 import java.util.Scanner;
 import java.util.List;
 
@@ -6,32 +7,33 @@ import java.util.List;
 public class Application {
 
 
-        private static String petDescription;
+    private static String petDescription;
 
-        private static void printPets(List<VirtualPet> pets){
-            for(VirtualPet pet : pets){
-                System.out.println(pet);
-            }
+    private static void printPets(List<pets_amok.VirtualPet> pets) {
+        for (pets_amok.VirtualPet pet : pets) {
+            System.out.println(pet);
         }
+    }
+
     public static void main(String[] args) {
 
         Scanner userInput = new Scanner(System.in);
-      VirtualPetShelter virtualPetShelter = new VirtualPetShelter();
-      virtualPetShelter.admit(new OrganicCat("Hobbs", "Friend of Calvin, an upright tiger with upstanding morals", 20,10, 20,
-              15, 25));
-      virtualPetShelter.admit(new OrganicDog("Riley", "A reliable dog and one heck of a Ghost", 15, 20, 25, 30,20));
+        pets_amok.VirtualPetShelter virtualPetShelter = new pets_amok.VirtualPetShelter();
+        virtualPetShelter.admit(new OrganicCat("Hobbs", "Friend of Calvin, an upright tiger with upstanding morals", 20, 10, 20,
+                15, 25));
+        virtualPetShelter.admit(new OrganicDog("Riley", "A reliable dog and one heck of a Ghost", 15, 20, 25, 30, 20));
 
 
         String showMenu = String.format(" Hey there, got some pets that need tending, partner..");
         System.out.println("\n Take a look at the available pets");
         System.out.println("\n Name    |Hunger             |Boredom             |Thirst             |Overall Health");
         System.out.println("___________|___________________|____________________|___________________|_________________");
-            for(VirtualPet pet: virtualPetShelter.retrieveAllPets()){
-                if(pet instanceof VirtualPet){
-                    System.out.println(pet.getName() + "\t" + "\t" + pet.getHunger() + "\t" + "\t" + "\t" + pet.getBoredom()
-                    + "\t" +"\t" + pet.getThirst() +"\t" + "\t" + pet.getOverallHealth() + "\t" + "\t");
-                }
+        for (pets_amok.VirtualPet pet : virtualPetShelter.retrieveAllPets()) {
+            if (pet instanceof pets_amok.VirtualPet) {
+                System.out.println(pet.getName() + "\t" + "\t" + pet.getHunger() + "\t" + "\t" + "\t" + pet.getBoredom()
+                        + "\t" + "\t" + pet.getThirst() + "\t" + "\t" + pet.getOverallHealth() + "\t" + "\t");
             }
+        }
 
         System.out.println("\n" + "Boss, what would you like to do with the buddies?");
         System.out.println("1. Feed all the organic p" + "ets.");
@@ -49,14 +51,14 @@ public class Application {
             System.out.println("\nWelcome to the Pet Shelter shelter, got some pets to take care of partner.\n");
             System.out.println("\nOrganic Dogs' status'\n" +
                     "Name•Description•Boredom•Hunger•Thirst•OverallHealth•Cage State \n");
-            printPets (virtualPetShelter.filterPets(Organic.class, Dog.class));
+            printPets(virtualPetShelter.filterPets(pets_amok.Organic.class, pets_amok.Dog.class));
             System.out.println("\nOrganic Cats' status'\n" +
                     "Name•Description•Boredom•Hunger•Thirst•OverallHealth \n");
-            printPets (virtualPetShelter.filterPets(Organic.class, Cat.class));
+            printPets(virtualPetShelter.filterPets(pets_amok.Organic.class, pets_amok.Cat.class));
             System.out.println("\nRobotic Pets' status'" + "\n" +
                     "Name•Happiness•Health•Boredom•Oil Level \n");
-            printPets (virtualPetShelter.filterPets(Robotic.class, null));
-            beginningScroll();
+            printPets(virtualPetShelter.filterPets(Robotic.class, null));
+            openeningScroll();
 
             virtualPetShelter.retrieveAllPets();
             int getAction = userInput.nextInt();
@@ -72,38 +74,38 @@ public class Application {
             } else if (getAction == 3) {
                 virtualPetShelter.oilAllRoboPets();
                 System.out.println("good call mechs need oil. don't want creaky knees");
-            } else if (getAction == 4)
-            {   virtualPetShelter.walkDogs();
+            } else if (getAction == 4) {
+                virtualPetShelter.walkDogs();
                 System.out.println("Take the dog for a walk, let them get some air");
-            } else if (getAction == 5)
-            {   virtualPetShelter.acceptNewVirtualPet();
+            } else if (getAction == 5) {
+                virtualPetShelter.acceptNewVirtualPet();
                 System.out.println("What is the pets Name?");
                 String name = userInput.nextLine();
                 System.out.println("Is the pet a Dog or Cat");
                 String animal = userInput.nextLine();
                 System.out.println("Is the pet a Robot or is it Organic?");
                 String lifeForm = userInput.nextLine();
-                if (lifeForm.equalsIgnoreCase("robot") && animal.equalsIgnoreCase("cat")){
-                    RoboCat roboCat =  new RoboCat(name, petDescription, 15, 20,10,20,20);
+                if (lifeForm.equalsIgnoreCase("robot") && animal.equalsIgnoreCase("cat")) {
+                    RoboCat roboCat = new RoboCat(name, petDescription, 15, 20, 10, 20, 20);
                     virtualPetShelter.admit(roboCat);
-                }else if(lifeForm.equalsIgnoreCase("robot") && animal.equalsIgnoreCase("dog")){
-                    RoboDog roboDog = new RoboDog(name, petDescription, 15, 20,10,20,20);
+                } else if (lifeForm.equalsIgnoreCase("robot") && animal.equalsIgnoreCase("dog")) {
+                    RoboDog roboDog = new RoboDog(name, petDescription, 15, 20, 10, 20, 20);
                     virtualPetShelter.admit(roboDog);
-                }else if(lifeForm.equalsIgnoreCase("organic") && animal.equalsIgnoreCase("cat")){
-                    OrganicCat organicCat = new OrganicCat(name, petDescription, 15, 25,10,5,10);
+                } else if (lifeForm.equalsIgnoreCase("organic") && animal.equalsIgnoreCase("cat")) {
+                    OrganicCat organicCat = new OrganicCat(name, petDescription, 15, 25, 10, 5, 10);
                     virtualPetShelter.admit(organicCat);
-                }else if (lifeForm.equalsIgnoreCase("organic") && animal.equalsIgnoreCase("dog")){
-                    OrganicDog organicDog = new OrganicDog(name, petDescription, 15, 10,10,20,5);
+                } else if (lifeForm.equalsIgnoreCase("organic") && animal.equalsIgnoreCase("dog")) {
+                    OrganicDog organicDog = new OrganicDog(name, petDescription, 15, 10, 10, 20, 5);
                     virtualPetShelter.admit(organicDog);
                 }
                 System.out.println("Ah, new pets. What is their name?");
             } else if (getAction == 6) {
-                 virtualPetShelter.freeTheCats();
-                 System.out.println("Let the cats out, they're anti-social anyhow");
+                virtualPetShelter.freeTheCats();
+                System.out.println("Let the cats out, they're anti-social anyhow");
             } else if (getAction == 7) {
                 virtualPetShelter.retrieveAdoptablesNameAndDescription();
                 System.out.println("Here are all the pets available for adoption.");
-            }else if (getAction == 8){
+            } else if (getAction == 8) {
                 System.out.println("Thanks for your help. Goodbye");
                 break;
             }
@@ -112,8 +114,11 @@ public class Application {
         virtualPetShelter.tickAll();
     }
 
-    private static void beginningScroll() {
-        System.out.println("\n" +"Whoa there partner, would you like to do with the pets?");
+
+
+
+    private static void openeningScroll() {
+        System.out.println("\n" + "Whoa there partner, would you like to do with the pets?");
         System.out.println("1. Feed those organic pets partner.");
         System.out.println("2. Whoa partner, be a shame if you watered robo pets. Water all the organic ones.");
         System.out.println("3. Oil and steel go together like PB & J. Oil all the robo petsters");
@@ -122,5 +127,4 @@ public class Application {
         System.out.println("6. Adopt a pet");
         System.out.println("7. Bring a pet into the shelter.");
     }
-
 }

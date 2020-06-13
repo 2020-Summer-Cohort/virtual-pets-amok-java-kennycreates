@@ -1,6 +1,6 @@
 package pets_amok;
 
-public abstract class Dog extends VirtualPet{
+public abstract class Dog extends VirtualPet {
 
 
     public Dog(String name, String petDescription, int happiness, int boredom, int overallHealth, int hunger, int thirst) {

@@ -7,7 +7,7 @@ public class VirtualPetShelter {
     Map<String, VirtualPet> virtualPetShelter = new HashMap<>();
 
 
-    public void admit(VirtualPet petToAdmit) {
+    public void admit(RoboDog petToAdmit) {
         pets.put(petToAdmit.getName(), petToAdmit);
     }
 
@@ -118,5 +118,13 @@ public class VirtualPetShelter {
         return filterPets;
     }
 
+    public void admit(RoboCat roboCat) {
+    }
+
+    public void admit(OrganicCat organicCat) {
+    }
+
+    public void admit(OrganicDog organicDog) {
+    }
 }
 
